@@ -24,7 +24,7 @@ function App() {
     <div className={`${darkMode ? 'bg-gray-800 text-amber-50' : 'bg-amber-50 text-gray-800'} font-mono transition-colors min-h-screen overflow-x-hidden`} >
       <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} /> {/* Pass toggleDarkMode as a prop */}
       <Calculator darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-      <div className="container mx-auto py-4 border-b border-current border-b-1 py-2 text-right">
+      <div className="container mx-auto py-4 border-b border-current border-b-1 text-right">
         <p className={`${darkMode ? 'bg-gray-800 text-amber-50' : 'bg-amber-50 text-gray-800' } inline-block translate-y-[1.5em] pl-4  text-xs uppercase text-right`}>&copy; MD</p>
       </div>
     </div>
