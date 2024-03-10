@@ -6,11 +6,11 @@ function Calculator({ darkMode, toggleDarkMode }) {
     const [megabitsValue, setMegabitsValue] = useState<string>("");
 
     const calculateMegabytes = (megabits: number): number => {
-        return megabits * 8;
+        return megabits / 8;
     };
 
     const calculateMegaBits = (megabytes: number): number => {
-        return megabytes / 8;
+        return megabytes * 8;
     };
 
     const handleMegabitsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
