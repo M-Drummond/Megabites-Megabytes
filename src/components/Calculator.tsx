@@ -54,7 +54,7 @@ function Calculator({ darkMode, toggleDarkMode }) {
                         type="text"
                         value={megabits}
                         className="bg-transparent  border-current border-double border-4 p-4"
-                        placeholder="X"
+                        placeholder="X Mb/s"
                     />
                 </label>
                 <label className="flex flex-col gap-2">
@@ -65,7 +65,7 @@ function Calculator({ darkMode, toggleDarkMode }) {
                         onChange={handleMegabytesChange}
                         className="bg-transparent  border-current border-double border-4 p-4"
                         id="megabytesInput"
-                        placeholder="Y"
+                        placeholder="Y MB/s"
                     />
                 </label>
             </form>
