@@ -70,7 +70,7 @@ function Calculator({ darkMode, toggleDarkMode }) {
                 </label>
             </form>
 			{ megabits && megabytes && 
-				<p className="text-lg text-center">{ megabitsValue }Mb is equal to { megabytes }MB</p>
+				<p className="text-lg text-center">{ megabitsValue }Mb/s is equal to { megabytes }MB/s</p>
 			}			
         </section>
     );
