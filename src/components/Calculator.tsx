@@ -1,73 +1,79 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { useState } from 'react';
 
-const calculateMegabytes = (megabits: number): number => {
-	return megabits * 8;
-};
+function Calculator({ darkMode, toggleDarkMode }) {
+    const [megabits, setMegabits] = useState<string>("");
+    const [megabytes, setMegabytes] = useState<string>("");
+    const [megabitsValue, setMegabitsValue] = useState<string>("");
 
-const calculateMegaBits = (megabytes: number): number => {
-	return megabytes / 8;
-};
+    const calculateMegabytes = (megabits: number): number => {
+        return megabits * 8;
+    };
 
+    const calculateMegaBits = (megabytes: number): number => {
+        return megabytes / 8;
+    };
 
-function Calculator({ darkMode }) {
-	const [megabits, setMegabits] = useState("");
-	const [megabytes, setMegabytes] = useState("");
+    const handleMegabitsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const value = event.target.value;
+        setMegabits(value);
+        const megabitsValue = parseFloat(value);
+        if (!isNaN(megabitsValue)) {
+            const calculatedMegabytes = calculateMegabytes(megabitsValue).toString();
+            setMegabytes(calculatedMegabytes);
+            setMegabitsValue(value);
+        } else {
+            setMegabytes("");
+            setMegabitsValue("");
+        }
+    };
 
-	const handleMegabitsChange = (event: ChangeEvent<HTMLInputElement>) => {
-		const megabitsValue : number = parseFloat(event.target.value);
-		setMegabits(event.target.value);
-		if ( megabitsValue ) {
-			const megabytesValue = calculateMegabytes(megabitsValue);
-			setMegabytes(megabytesValue.toString() );
-		} else {
-			setMegabytes("");
-		}
-	};
+    const handleMegabytesChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const value = event.target.value;
+        setMegabytes(value);
+        const megabytesValue = parseFloat(value);
+        if (!isNaN(megabytesValue)) {
+            const calculatedMegabits = calculateMegaBits(megabytesValue).toString();
+            setMegabits(calculatedMegabits);
+            setMegabitsValue(calculatedMegabits);
+        } else {
+            setMegabits("");
+        }
+    };
 
-	const handleMegabytesChange = (event: ChangeEvent<HTMLInputElement>) => {
-		const megabytesValue : number = parseFloat(event.target.value);
-		setMegabytes(event.target.value);
-		if ( megabytesValue ) {
-			const megabitsValue = calculateMegaBits(megabytesValue);
-			setMegabits(megabitsValue.toString());
-		} else {
-			setMegabits("");
-		}
-	};
-
-	return (
-		<section
-			id="Calculator"
-			className={` ${darkMode ? 'bg-gray-900 text-white border-white' : 'border-gray-900'} xl:max-w-screen-lg mx-auto px-8 min-h-[500px] border-t border-b md:border-x border-solid md:rounded-xl`}
-		>
-			<form className="p-8 grid grid-cols-1 md:grid-cols-2 gap-4">
-				<label className="flex flex-col gpa-4">
-					<span className="block mb-4">Megabits per Second</span>
-					<input
-						id="megabitsInput"
-						onChange={handleMegabitsChange}
-						type="text"
-						value={megabits}
-						className="bg-transparent outline-none focus:ring-1 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-transparent rounded-lg border-solid border-current border p-4"
-						placeholder="X"
-						aria-label="megabits input"
-					/>
-				</label>
-				<label className="flex flex-col gpa-4">
-					<span className="block mb-4">Megabytes per Second</span>
-					<input
-						type="text"
-						value={megabytes}
-						onChange={handleMegabytesChange}
-						className="bg-transparent outline-none focus:ring-1 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-transparent rounded-lg border-solid border-current border p-4"
-						id="megabytesInput"
-						placeholder="Y"
-						aria-label="megabytes input"
-					/>
-				</label>
-			</form>
-		</section>
-	);
+    return (
+        <section
+            id="Calculator"
+            className={` ${darkMode ? ' ' : ''} container border-current mx-auto px-8 min-h-[500px] border-t-4 border-b-4 md:border-x-4 border-double border`}
+        >
+            <form className="p-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+                <label className="flex flex-col gap-2">
+                    <span className="block mb-2">Megabits per Second</span>
+                    <input
+                        id="megabitsInput"
+                        onChange={handleMegabitsChange}
+                        type="text"
+                        value={megabits}
+                        className="bg-transparent  border-current border-double border-4 p-4"
+                        placeholder="X"
+                    />
+                </label>
+                <label className="flex flex-col gap-2">
+                    <span className="block mb-2">Megabytes per Second</span>
+                    <input
+                        type="text"
+                        value={megabytes}
+                        onChange={handleMegabytesChange}
+                        className="bg-transparent  border-current border-double border-4 p-4"
+                        id="megabytesInput"
+                        placeholder="Y"
+                    />
+                </label>
+            </form>
+			{ megabits && megabytes && 
+				<p className="text-lg text-center">{ megabitsValue }Mb is equal to { megabytes }MB</p>
+			}			
+        </section>
+    );
 }
 
 export default Calculator;

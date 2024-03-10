@@ -3,16 +3,10 @@ import React from 'react';
 function Header({ darkMode, toggleDarkMode }) {
   return (
     <header className="App-header p-4">
-      <div className="container flex md:flex-row items-center justify-between ">
-        <div id="button-container">
-          {/* <button>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-            </svg>
-          </button> */}
-        </div>
+      <div className="container mx-auto flex md:flex-row items-center justify-between ">
+ 
 
-        <a href='/'>Megabits / Megabytes Calculator</a>
+        <h1 className="text-sm"><a href='/'>[Megabits / Megabytes Calculator]</a></h1>
 
         <div>
           <button id="darkMode" onClick={toggleDarkMode}>
