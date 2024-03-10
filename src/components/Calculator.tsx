@@ -1,21 +1,22 @@
-import React, { useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 
-function calculateMegabytes(megabits : number) {
-	return megabits / 8;
-}
+const calculateMegabytes = (megabits: number): number => {
+	return megabits * 8;
+};
 
-function calculateMegaBits(megabytes : number) {
-	return megabytes * 8 ;
-}
+const calculateMegaBits = (megabytes: number): number => {
+	return megabytes / 8;
+};
+
 
 function Calculator({ darkMode }) {
 	const [megabits, setMegabits] = useState("");
 	const [megabytes, setMegabytes] = useState("");
 
-	const handleMegabitsChange = (event) => {
+	const handleMegabitsChange = (event: ChangeEvent<HTMLInputElement>) => {
 		const megabitsValue : number = parseFloat(event.target.value);
 		setMegabits(event.target.value);
-		if (!isNaN(megabitsValue)) {
+		if ( megabitsValue ) {
 			const megabytesValue = calculateMegabytes(megabitsValue);
 			setMegabytes(megabytesValue.toString() );
 		} else {
@@ -23,10 +24,10 @@ function Calculator({ darkMode }) {
 		}
 	};
 
-	const handleMegabytesChange = (event) => {
+	const handleMegabytesChange = (event: ChangeEvent<HTMLInputElement>) => {
 		const megabytesValue : number = parseFloat(event.target.value);
 		setMegabytes(event.target.value);
-		if (!isNaN(megabytesValue)) {
+		if ( megabytesValue ) {
 			const megabitsValue = calculateMegaBits(megabytesValue);
 			setMegabits(megabitsValue.toString());
 		} else {
