@@ -1,6 +1,7 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header.tsx'; // Import the Header component
+import Footer from './components/Footer.tsx'; // Import the Footer component
 import Calculator from './components/Calculator.tsx';
 
 function App() {
@@ -24,9 +25,8 @@ function App() {
     <div className={`${darkMode ? 'bg-gray-800 text-amber-50' : 'bg-amber-50 text-gray-800'} font-mono transition-colors min-h-screen overflow-x-hidden`} >
       <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} /> {/* Pass toggleDarkMode as a prop */}
       <Calculator darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-      <div className="container mx-auto py-4 border-b border-current border-b-1 text-right">
-        <p className={`${darkMode ? 'bg-gray-800 text-amber-50' : 'bg-amber-50 text-gray-800' } inline-block translate-y-[1.5em] pl-4  text-xs uppercase text-right`}>&copy; MD</p>
-      </div>
+      <Footer darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+
     </div>
   );
 }
