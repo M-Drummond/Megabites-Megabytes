@@ -50,6 +50,7 @@ function Calculator({ darkMode, toggleDarkMode }) {
                     <span className="block mb-2">Megabits per Second</span>
                     <input
                         id="megabitsInput"
+                        pattern="[0-9]*" 
                         onChange={handleMegabitsChange}
                         type="text"
                         value={megabits}
@@ -60,6 +61,7 @@ function Calculator({ darkMode, toggleDarkMode }) {
                 <label className="flex flex-col gap-2">
                     <span className="block mb-2">Megabytes per Second</span>
                     <input
+                        pattern="[0-9]*" 
                         type="text"
                         value={megabytes}
                         onChange={handleMegabytesChange}
