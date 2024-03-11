@@ -51,7 +51,7 @@ function Calculator({ darkMode, toggleDarkMode }) {
                     <input
                         id="megabitsInput"
                         pattern="[0-9]*" 
-                        inputMode="numeric"
+                        inputMode="decimal"
                         onChange={handleMegabitsChange}
                         type="text"
                         value={megabits}
@@ -63,7 +63,7 @@ function Calculator({ darkMode, toggleDarkMode }) {
                     <span className="block mb-2">Megabytes per Second</span>
                     <input
                         pattern="[0-9]*" 
-                        inputMode="numeric"
+                        inputMode="decimal"
                         type="text"
                         value={megabytes}
                         onChange={handleMegabytesChange}
